@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoRecycle - User Profile</title>
+  <link rel="stylesheet" href="profilepage.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <img src="https://images.pexels.com/photos/7516363/pexels-photo-7516363.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="EcoRecycle Logo" class="logo-image">
+        <h1>EcoRecycle</h1>
+      </div>
+      <nav class="nav">
+        <ul>
+          <li><a href="#" class="active">Profile</a></li>
+          <li><a href="#">Schedule Pickup</a></li>
+          <li><a href="#">Rewards</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <h2 class="page-title">My Profile</h2>
+      
+      <!-- Profile Section -->
+      <section class="profile-section">
+        <div class="profile-card">
+          <div class="profile-header">
+            <div class="profile-image-container">
+              <div id="profile-image" class="profile-image">
+                <span class="profile-initials">JS</span>
+                <!-- Profile image will be set via JavaScript -->
+              </div>
+              <div class="profile-image-actions">
+                <button id="change-image-btn" class="btn btn-small">Change</button>
+                <button id="remove-image-btn" class="btn btn-small btn-outline">Remove</button>
+              </div>
+              <input type="file" id="image-upload" accept="image/*" hidden>
+            </div>
+            <div class="profile-info">
+              <h3 id="user-name">John Smith</h3>
+              <div class="eco-points">
+                <span class="eco-points-icon">🌱</span>
+                <span id="eco-points-value">1,250</span> EcoPoints
+              </div>
+            </div>
+          </div>
+          
+          <div class="profile-details">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" value="John Smith">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" value="john.smith@example.com">
+            </div>
+            <div class="form-group">
+              <label for="mobile">Mobile Number</label>
+              <input type="tel" id="mobile" value="+1 (555) 123-4567">
+            </div>
+            <div class="form-group">
+              <label for="address">Address</label>
+              <textarea id="address" rows="3">123 Green Street, Eco City, EC 12345</textarea>
+            </div>
+            <div class="profile-actions">
+              <button id="save-profile-btn" class="btn btn-primary">Save Changes</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Statistics Section -->
+      <section class="stats-section">
+        <div class="stats-card">
+          <h3>Your Recycling Impact</h3>
+          <div class="stats-container">
+            <div class="stat-item">
+              <div class="stat-value" id="total-ewaste">75</div>
+              <div class="stat-label">kg E-Waste Recycled</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value" id="pickups-completed">12</div>
+              <div class="stat-label">Pickups Completed</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value" id="co2-saved">35</div>
+              <div class="stat-label">kg CO₂ Saved</div>
+            </div>
+          </div>
+          <div class="progress-container">
+            <label>Progress to next reward tier</label>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 65%"></div>
+            </div>
+            <div class="progress-labels">
+              <span>Silver</span>
+              <span>Gold</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Scheduled Pickups Section -->
+      <section class="pickups-section">
+        <div class="pickups-card">
+          <h3>Scheduled Pickups</h3>
+          <div class="scheduled-pickups" id="scheduled-pickups">
+            <div class="pickup-item upcoming">
+              <div class="pickup-date">
+                <div class="pickup-month">May</div>
+                <div class="pickup-day">15</div>
+              </div>
+              <div class="pickup-details">
+                <div class="pickup-title">Electronics Recycling</div>
+                <div class="pickup-time">09:00 AM - 11:00 AM</div>
+                <div class="pickup-address">123 Green Street, Eco City</div>
+              </div>
+              <div class="pickup-status">Upcoming</div>
+              <div class="pickup-actions">
+                <button class="btn btn-small btn-outline">Reschedule</button>
+                <button class="btn btn-small btn-outline btn-danger">Cancel</button>
+              </div>
+            </div>
+            
+            <div class="pickup-item completed">
+              <div class="pickup-date">
+                <div class="pickup-month">Apr</div>
+                <div class="pickup-day">28</div>
+              </div>
+              <div class="pickup-details">
+                <div class="pickup-title">Computer Parts</div>
+                <div class="pickup-time">02:00 PM - 04:00 PM</div>
+                <div class="pickup-address">123 Green Street, Eco City</div>
+              </div>
+              <div class="pickup-status">Completed</div>
+              <div class="pickup-result">
+                <span>12.5 kg recycled</span>
+                <span>+150 EcoPoints</span>
+              </div>
+            </div>
+            
+            <div class="pickup-item completed">
+              <div class="pickup-date">
+                <div class="pickup-month">Mar</div>
+                <div class="pickup-day">15</div>
+              </div>
+              <div class="pickup-details">
+                <div class="pickup-title">Old Devices</div>
+                <div class="pickup-time">10:00 AM - 12:00 PM</div>
+                <div class="pickup-address">123 Green Street, Eco City</div>
+              </div>
+              <div class="pickup-status">Completed</div>
+              <div class="pickup-result">
+                <span>8.3 kg recycled</span>
+                <span>+100 EcoPoints</span>
+              </div>
+            </div>
+          </div>
+          <div class="pickups-actions">
+            <button class="btn btn-primary">Schedule New Pickup</button>
+            <button class="btn btn-outline">View Pickup History</button>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Account Management Section -->
+      <section class="account-section">
+        <div class="account-card">
+          <h3>Account Management</h3>
+          <div class="account-options">
+            <div class="account-option">
+              <div class="option-details">
+                <h4>Change Password</h4>
+                <p>Update your password to keep your account secure</p>
+              </div>
+              <button class="btn btn-outline">Change</button>
+            </div>
+            <div class="account-option">
+              <div class="option-details">
+                <h4>Notification Settings</h4>
+                <p>Manage how and when we contact you</p>
+              </div>
+              <button class="btn btn-outline">Manage</button>
+            </div>
+            <div class="account-option danger">
+              <div class="option-details">
+                <h4>Delete Account</h4>
+                <p>Permanently remove your account and all data</p>
+              </div>
+              <button id="delete-account-btn" class="btn btn-danger">Delete Account</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p>&copy; 2025 EcoRecycle. Turning E-Waste into Rewards.</p>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Contact Us</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  
+  <!-- Modals -->
+  <div id="delete-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Delete Account</h3>
+        <button id="close-modal" class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete your account? This action cannot be undone and all your data will be permanently removed.</p>
+        <div class="modal-actions">
+          <button id="confirm-delete" class="btn btn-danger">Delete Permanently</button>
+          <button id="cancel-delete" class="btn btn-outline">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="profilepage.js"></script>
+</body>
+</html>
