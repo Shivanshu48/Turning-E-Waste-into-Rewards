@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - E-Waste Rewards</title>
+  <link rel="stylesheet" href="loginpage.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2 class="title">Login with Email</h2>
+    <form action="otp.html" method="get">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <p id="otp-message" style="color: green;"></p>
+      <button type="submit">Send OTP</button>
+    </form>
+    <p class="link-text">Don't have an account? <a href="signuppage.html">Sign up</a></p>
+  </div>
+</body>
+</html>
+<script>
+  const form = document.querySelector('form');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById('email').value;
+
+    try {
+      const res = await fetch('http://localhost:5000/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        //  Show success message before redirect
+       document.getElementById('otp-message').textContent = 'OTP sent to your email.';
+
+
+        //  Redirect after delay
+        setTimeout(() => {
+          window.location.href = `otp.html?email=${encodeURIComponent(email)}`;
+        }, 1500);
+      } else {
+        alert(data.message || 'Email not registered');
+      }
+    } catch (err) {
+      alert('Error sending OTP');
+      console.error(err);
+    }
+  });
+</script>
+
