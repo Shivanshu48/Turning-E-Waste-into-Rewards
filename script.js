@@ -361,7 +361,7 @@ fadeElements.forEach(element => {
 
 // for map
 
-let centers = [];  // Will hold your centers data
+let centers = [];  // Flattened array with city field
 
 // Initialize Leaflet map centered on India
 const map = L.map('map').setView([20.5937, 78.9629], 5);
@@ -375,7 +375,7 @@ const markersGroup = L.layerGroup().addTo(map);
 function showMarkersForCity(city) {
   markersGroup.clearLayers();
 
-  const filteredCenters = centers.filter(center => center["CITY"].toLowerCase() === city.toLowerCase());
+  const filteredCenters = centers.filter(center => center.city.toLowerCase() === city.toLowerCase());
 
   if (filteredCenters.length === 0) {
     alert(`No centers found for ${city}`);
@@ -385,17 +385,20 @@ function showMarkersForCity(city) {
   const bounds = [];
 
   filteredCenters.forEach(center => {
-    const lat = parseFloat(center["LATITUDE"]);
-    const lng = parseFloat(center["LONGITUDE"]);
-    const name = center["E-WASTE COLLECTION CENTERS"];
-    const address = center["ADDRESS"];
-    const contact = center["CONTACT"];
+    if (!center.latitude || !center.longitude) return;
+
+    const lat = parseFloat(center.latitude);
+    const lng = parseFloat(center.longitude);
 
     const marker = L.marker([lat, lng]).addTo(markersGroup);
     const popupContent = `
-      <b>${name}</b><br/>
-      ${address}<br/>
-      Contact: ${contact}
+      <b>${center.name}</b><br/>
+      ${center.address}<br/>
+      Rating: ${center.rating}<br/>
+      Contact: ${center.contact}<br/>
+      Email: ${center.email}<br/>
+      Time: ${center.time}<br/>
+      Recycled: ${center.wasteRecycledLastMonth}
     `;
     marker.bindPopup(popupContent);
     bounds.push([lat, lng]);
@@ -412,15 +415,33 @@ function showMarkersForCity(city) {
 fetch('centres.json')
   .then(res => res.json())
   .then(data => {
-    centers = data;
+    // Flatten JSON into an array with city property
+    for (const city in data) {
+      const cityCenters = data[city];
+      cityCenters.forEach(center => {
+        centers.push({
+          city,
+          name: center.name,
+          address: center.address,
+          rating: center.rating,
+          contact: center.contact,
+          email: center.email,
+          time: center.time,
+          wasteRecycledLastMonth: center.wasteRecycledLastMonth,
+          latitude: center.latitude || center.lat || center.LATITUDE,  // Optional if you add coordinates
+          longitude: center.longitude || center.lng || center.LONGITUDE
+        });
+      });
+    }
+
     showMarkersForCity('Delhi');  // Default city on load
   })
   .catch(err => console.error('Failed to load centres.json:', err));
 
 // Dropdown selection logic
-locationDropdown = document.querySelector('.location-dropdown');
-selectedLocation = locationDropdown.querySelector('.selected-location span');
-cityList = locationDropdown.querySelector('.city-list');
+ locationDropdown = document.querySelector('.location-dropdown');
+ selectedLocation = locationDropdown.querySelector('.selected-location span');
+ cityList = locationDropdown.querySelector('.city-list');
 
 // Toggle city list visibility
 locationDropdown.querySelector('.selected-location').addEventListener('click', () => {
