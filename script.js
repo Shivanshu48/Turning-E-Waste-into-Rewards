@@ -54,7 +54,6 @@ function updateDropOffLocations(city) {
       { name: 'Just Dispose Recycling Pvt. Ltd.', address: 'Unit No: 103, 110, 119, Arvind Industrial Estate, Navghar, Vasai East, Dist. Thane', rating: '3*' , wasterecycledlastmonth: '2000kg' , contact: '8902135676' ,email: 'disposejst3228@gmail.com' , time: '9:30 AM - 6:30 PM' },
       { name: 'Kohinoor E-Waste Recycling Pvt. Ltd.', address: 'Gut No. 205/1 and 205/2, Opp. Gurudatta Washing Centre, Dhekhu, Khalapur, Dist. Raigad', rating: '4*' , wasterecycledlastmonth: '2800kg' , contact: '9874324595' ,email: 'kohi12noor2@gmail.com' , time: '9:00 AM - 6:00 PM' },
       { name:'Masstech Recycling LLP',address : 'Gala No. 56, 58, 59 & 82, M.J.K. Compound, Kherani Road, Sakinaka, Mumbai  400072' , rating: '3.8*',wasterecyclelastmonth: '2800kg',contact: '9854090758', email: 'masstech300@gmail.com',time: '9:00 AM - 6:00 PM'}
-      
     ],
     'Bangalore':[
       { name: 'Ebox Recyclers  Electronic City', address: ' Shed #B-3, KSSIDC Industrial Estate, Veerasandra 2nd Stage, Huskur Road, Electronic City, Bangalore 560100', rating: '4.5*' , wasterecycledlastmonth: '2800kg' , contact: '9844068944' ,email: 'eboxx@gmail.com' , time: '9:00 AM - 6:00 PM' },
@@ -476,3 +475,46 @@ cityList.querySelectorAll('li').forEach(li => {
     showMarkersForCity(city);
   });
 });
+
+//get direction 
+document.addEventListener("DOMContentLoaded", () => {
+    fetch("centres.json")
+        .then(response => response.json())
+        .then(data => {
+            console.log("Fetched Data:", data); // 1️⃣ Debugging: Log fetched JSON
+
+            // Flatten all city-based arrays into a single list of locations
+            const allLocations = Object.values(data).flat();
+
+            if (!Array.isArray(allLocations) || allLocations.length === 0) {
+                console.error("No valid location data found:", allLocations);
+                return;
+            }
+
+            attachClickListeners(allLocations);
+        })
+        .catch(error => console.error("Error fetching location data:", error));
+});
+
+function attachClickListeners(locations) {
+    document.addEventListener("click", event => {
+        if (event.target.classList.contains("location-btn")) {
+            const locationName = event.target.parentElement.querySelector("h3").textContent.trim();
+            console.log("Extracted Location Name:", locationName); // 1️⃣ Debugging: Log extracted name
+
+            // 2️⃣ Ensure case-insensitive matching and allow partial matches
+            const locationData = locations.find(location => 
+                locationName.toLowerCase().includes(location.name.toLowerCase())
+            );
+
+            if (locationData) {
+                const { latitude, longitude } = locationData;
+                console.log(`Opening Google Maps for: ${locationName} (${latitude}, ${longitude})`); // 3️⃣ Debugging: Log match success
+                window.open(`https://www.google.com/maps?q=${latitude},${longitude}`, "_blank");
+            } else {
+                console.error(`Location data not found for: "${locationName}".`);
+                alert(`No location found for "${locationName}". Please check if the name exactly matches the entries in JSON.`);
+            }
+        }
+    });
+}
