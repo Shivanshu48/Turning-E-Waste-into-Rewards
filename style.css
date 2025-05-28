@@ -511,12 +511,19 @@ button {
   color: var(--primary-dark);
   margin-right: 1rem;
   white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ticker-marquee {
+  overflow: hidden;
+  flex: 1;
+  position: relative;
 }
 
 .ticker-content {
   display: flex;
-  animation: ticker 30s linear infinite;
   white-space: nowrap;
+  animation: ticker 30s linear infinite;
 }
 
 .ticker-item {
@@ -920,10 +927,10 @@ button {
 
 @keyframes ticker {
   0% {
-    transform: translateX(0);
+    transform: translateX(100%);
   }
   100% {
-    transform: translateX(-1000px);
+    transform: translateX(-100%);
   }
 }
 
