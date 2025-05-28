@@ -1,0 +1,22 @@
+{
+  "name": "turning-e-waste-into-rewards",
+  "version": "1.0.0",
+  "description": "",
+  "main": "profilepage.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tarun048/Turning-E-Waste-into-Rewards.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/tarun048/Turning-E-Waste-into-Rewards/issues"
+  },
+  "homepage": "https://github.com/tarun048/Turning-E-Waste-into-Rewards#readme"
+}

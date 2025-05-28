@@ -208,26 +208,38 @@ window.addEventListener('click', (e) => {
 });
 
 // Form submissions
-pickupForm.addEventListener('submit', (e) => {
+pickupForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-  
-  // Get form values
-  const name = document.getElementById('name').value;
-  const phone = document.getElementById('phone').value;
-  const address = document.getElementById('address').value;
-  const date = document.getElementById('date').value;
-  const time = document.getElementById('time').value;
-  const items = document.getElementById('items').value;
-  
-  // In a real application, you would send this data to a server
-  console.log({ name, phone, address, date, time, items });
-  
-  // Show success message
-  alert(`Thank you, ${name}! Your pickup has been scheduled for ${date} between ${time.replace('-', '-')} hours. We'll contact you at ${phone} to confirm. The pickup fee of ₹199 will be collected at the time of pickup.`);
-  
-  // Reset form and close modal
+
+  const data = {
+    name: document.getElementById('name').value,
+    phone: document.getElementById('phone').value,
+    address: document.getElementById('address').value,
+    date: document.getElementById('date').value,
+    time: document.getElementById('time').value,
+    items: document.getElementById('items').value,
+    email: document.getElementById('email') ? document.getElementById('email').value : '', // add email field to form
+  };
+
+  try {
+   const response = await fetch('http://localhost:5000/schedule-pickup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+
+   if (response.ok) {
+  alert(result.message);
   pickupForm.reset();
   closeModal(pickupModal);
+} else {
+  alert('Failed to schedule pickup: ' + (result.message || result.error || 'Unknown error'));
+}
+  } catch (error) {
+    alert('Error scheduling pickup: ' + error.message);
+  }
 });
 
 newsletterForm.addEventListener('submit', (e) => {

@@ -3,32 +3,61 @@ const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const fs = require('fs');
+const path = require('path');
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-const otpStore = {};  // { email: { otp, expiresAt } }
+const otpStore = {}; // In-memory OTP store: { email: { otp, expiresAt } }
 
-// Send OTP - expires in 5 minutes
+const usersFile = path.join(__dirname, 'users.json');
+const pickupsFile = path.join(__dirname, 'pickups.json');
+
+// Utility to read JSON file safely
+function readJsonFile(filePath) {
+  try {
+    if (fs.existsSync(filePath)) {
+      const content = fs.readFileSync(filePath, 'utf8');
+      return JSON.parse(content);
+    }
+  } catch (e) {
+    console.error(`Error reading ${filePath}:`, e);
+  }
+  return [];
+}
+
+// Utility to write JSON file safely
+function writeJsonFile(filePath, data) {
+  try {
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+    return true;
+  } catch (e) {
+    console.error(`Error writing ${filePath}:`, e);
+    return false;
+  }
+}
+
+// Nodemailer transporter (reuse for all emails)
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'rohangupta112005@gmail.com',
+    pass: 'caoz ufsw ynvq eptr' // Your app password here
+  }
+});
+
+// -------- OTP Endpoints --------
+
+// Send OTP
 app.post('/send-otp', async (req, res) => {
   const { email } = req.body;
-  if (!email) {
-    return res.status(400).json({ success: false, message: 'Email is required' });
-  }
+  if (!email) return res.status(400).json({ success: false, message: 'Email is required' });
 
   const otp = Math.floor(100000 + Math.random() * 900000);
-  const expiresAt = Date.now() + 5 * 60 * 1000; // 5 min
+  const expiresAt = Date.now() + 5 * 60 * 1000; // 5 minutes
 
   otpStore[email] = { otp, expiresAt };
-
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'rohangupta112005@gmail.com',   // Your Gmail here
-      pass: 'caoz ufsw ynvq eptr'            // Your app password here
-    }
-  });
 
   const mailOptions = {
     from: 'rohangupta112005@gmail.com',
@@ -38,8 +67,8 @@ app.post('/send-otp', async (req, res) => {
   };
 
   try {
-    console.log(`Sending OTP ${otp} to ${email}`);
     await transporter.sendMail(mailOptions);
+    console.log(`OTP ${otp} sent to ${email}`);
     res.json({ success: true, message: 'OTP sent' });
   } catch (error) {
     console.error('Error sending OTP:', error);
@@ -50,19 +79,17 @@ app.post('/send-otp', async (req, res) => {
 // Verify OTP
 app.post('/verify-otp', (req, res) => {
   const { email, otp } = req.body;
+  if (!email || !otp) return res.status(400).json({ success: false, message: 'Email and OTP are required' });
 
-  if (!otpStore[email]) {
-    return res.status(400).json({ success: false, message: 'No OTP sent to this email' });
-  }
+  const record = otpStore[email];
+  if (!record) return res.status(400).json({ success: false, message: 'No OTP sent to this email' });
 
-  const { otp: savedOtp, expiresAt } = otpStore[email];
-
-  if (Date.now() > expiresAt) {
+  if (Date.now() > record.expiresAt) {
     delete otpStore[email];
     return res.status(400).json({ success: false, message: 'OTP expired' });
   }
 
-  if (savedOtp == otp) {
+  if (parseInt(otp, 10) === record.otp) {
     delete otpStore[email];
     return res.json({ success: true, message: 'OTP Verified' });
   } else {
@@ -70,73 +97,41 @@ app.post('/verify-otp', (req, res) => {
   }
 });
 
-// Register user
+// -------- User Registration --------
 app.post('/register', (req, res) => {
   const { name, mobile, city, email } = req.body;
-
-  if (!name || !mobile || !city  || !email) {
+  if (!name || !mobile || !city || !email) {
     return res.status(400).json({ success: false, message: 'All fields are required' });
   }
 
-  let users = [];
-  try {
-    const data = fs.readFileSync('users.json', 'utf8');
-    users = JSON.parse(data);
-  } catch (err) {
-    // File might not exist yet, ignore
-  }
+  const users = readJsonFile(usersFile);
 
   if (users.find(u => u.email === email)) {
     return res.status(400).json({ success: false, message: 'Email already registered' });
   }
 
-  users.push({ name, mobile, city, email, registeredAt: new Date() });
+  users.push({ name, mobile, city, email, registeredAt: new Date().toISOString() });
 
-  try {
-    fs.writeFileSync('users.json', JSON.stringify(users, null, 2));
-    res.json({ success: true, message: 'Registration successful' });
-  } catch (err) {
-    console.error('Error saving user:', err);
-    res.status(500).json({ success: false, message: 'Failed to save user' });
+  if (!writeJsonFile(usersFile, users)) {
+    return res.status(500).json({ success: false, message: 'Failed to save user' });
   }
+
+  return res.json({ success: true, message: 'Registration successful' });
 });
 
-const PORT = 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
-
-app.post('/login', (req, res) => {
+// -------- Login --------
+app.post('/login', async (req, res) => {
   const { email } = req.body;
-  if (!email) {
-    return res.status(400).json({ success: false, message: 'Email is required' });
-  }
+  if (!email) return res.status(400).json({ success: false, message: 'Email is required' });
 
-  let users = [];
-  try {
-    const data = fs.readFileSync('users.json', 'utf8');
-    users = JSON.parse(data);
-  } catch (err) {
-    // ignore if no users.json yet
-  }
-
-  const userExists = users.find(u => u.email === email);
-
-  if (!userExists) {
+  const users = readJsonFile(usersFile);
+  if (!users.find(u => u.email === email)) {
     return res.status(400).json({ success: false, message: 'Email not registered' });
   }
 
-  // Generate and send OTP (reuse your send OTP logic)
   const otp = Math.floor(100000 + Math.random() * 900000);
-  const expiresAt = Date.now() + 5 * 60 * 1000; // 5 minutes
+  const expiresAt = Date.now() + 5 * 60 * 1000;
   otpStore[email] = { otp, expiresAt };
-
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'rohangupta112005@gmail.com',
-      pass: 'caoz ufsw ynvq eptr'
-    }
-  });
 
   const mailOptions = {
     from: 'rohangupta112005@gmail.com',
@@ -145,25 +140,83 @@ app.post('/login', (req, res) => {
     text: `Your OTP is: ${otp}. It will expire in 5 minutes.`
   };
 
-  transporter.sendMail(mailOptions)
-    .then(() => {
-      console.log(`Login OTP ${otp} sent to ${email}`);
-      res.json({ success: true, message: 'OTP sent' });
-    })
-    .catch((error) => {
-      console.error('Error sending OTP:', error);
-      res.status(500).json({ success: false, message: 'Failed to send OTP' });
-    });
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log(`Login OTP ${otp} sent to ${email}`);
+    res.json({ success: true, message: 'OTP sent' });
+  } catch (error) {
+    console.error('Error sending OTP:', error);
+    res.status(500).json({ success: false, message: 'Failed to send OTP' });
+  }
 });
 
-
-// Route to check if email is already registered
+// -------- Check Email --------
 app.post('/check-email', (req, res) => {
   const { email } = req.body;
   if (!email) return res.status(400).json({ message: 'Email required' });
 
-  const users = JSON.parse(fs.readFileSync('users.json', 'utf8'));
+  const users = readJsonFile(usersFile);
   const exists = users.some(user => user.email === email);
 
   res.json({ exists });
+});
+
+// -------- Schedule Pickup --------
+app.post('/schedule-pickup', (req, res) => {
+  console.log('Received schedule-pickup request:', req.body);
+  const { name, phone, address, date, time, items, email } = req.body;
+  if (!name || !phone || !address || !date || !time || !items || !email) {
+    return res.status(400).json({ success: false, message: 'All fields are required' });
+  }
+
+  const pickups = readJsonFile(pickupsFile);
+  pickups.push({
+    name,
+    phone,
+    address,
+    date,
+    time,
+    items,
+    email,
+    scheduledAt: new Date().toISOString()
+  });
+
+  if (!writeJsonFile(pickupsFile, pickups)) {
+    return res.status(500).json({ success: false, message: 'Failed to save pickup' });
+  }
+
+  const mailOptions = {
+    from: 'rohangupta112005@gmail.com',
+    to: email,
+    subject: 'Pickup Scheduled - E-Waste Recycling',
+    text: `Hello ${name},
+
+Thank you for scheduling your e-waste pickup.
+
+Details:
+- Phone: ${phone}
+- Address: ${address}
+- Preferred Date: ${date}
+- Preferred Time: ${time}
+- Items: ${items}
+
+Pickup fee: ₹199 (additional charges may apply)
+
+Thank you,
+Team EcoRewards`
+  };
+
+  transporter.sendMail(mailOptions, (error) => {
+    if (error) {
+      console.error('Error sending pickup confirmation email:', error);
+      return res.status(500).json({ success: false, message: 'Pickup scheduled but failed to send confirmation email.' });
+    }
+    return res.json({ success: true, message: `Pickup scheduled! Confirmation sent to ${email}.` });
+  });
+});
+
+// -------- Start Server --------
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
