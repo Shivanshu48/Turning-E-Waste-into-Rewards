@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Turning e-waste into rewards</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,7 +46,7 @@
           </ul>
         </div>
         <div class="rewards">
-          <img src="coins.png" alt="Reward Coin">
+          <img src="coin.png" alt="Reward Coin">
           <span>250 points</span>
         </div>
         <div class="user-profile">
@@ -78,18 +79,9 @@
     </div>
     
     <div class="services-container">
-      <div class="map-container">
-        <img src="https://i.ibb.co/KqgpzYV/map.png" alt="Drop-off Locations Map">
-        <div class="map-marker marker-1" data-location="Delhi Central">
-          <div class="marker-tooltip">Delhi Central</div>
-        </div>
-        <div class="map-marker marker-2" data-location="South Delhi">
-          <div class="marker-tooltip">South Delhi</div>
-        </div>
-        <div class="map-marker marker-3" data-location="East Delhi">
-          <div class="marker-tooltip">East Delhi</div>
-        </div>
-      </div>
+      <div class="map-container" style="height: 500px; position: relative;">
+  <div id="map" style="height: 100%; width: 100%;"></div>
+</div>
       
       <div class="service-options">
         <div class="service-card">
@@ -160,15 +152,15 @@
     </div>
     
   <div class="news-ticker">
-    <div class="ticker-header">Latest E-Waste News:</div>
-      <div class="ticker-marquee">
-      <div class="ticker-content">
-        <div class="ticker-item">India generates 3.2 million tons of e-waste annually</div>
-        <div class="ticker-item">Only 5% of e-waste is properly recycled in developing countries</div>
-        <div class="ticker-item">One ton of circuit boards contains 40-800 times the gold of ore</div>
-        <div class="ticker-item">E-waste contains valuable materials worth over $62.5 billion annually</div>
-        <div class="ticker-item">Recycling one million laptops saves energy equivalent to electricity used by 3,500 homes in a year</div>
-      </div>
+  <div class="ticker-header">Latest E-Waste News:</div>
+  <div class="ticker-marquee">
+    <div class="ticker-content">
+      <div class="ticker-item">India generates 3.2 million tons of e-waste annually</div>
+      <div class="ticker-item">Only 5% of e-waste is properly recycled in developing countries</div>
+      <div class="ticker-item">One ton of circuit boards contains 40-800 times the gold of ore</div>
+      <div class="ticker-item">E-waste contains valuable materials worth over $62.5 billion annually</div>
+      <div class="ticker-item">Recycling one million laptops saves energy equivalent to electricity used by 3,500 homes in a year</div>
+    </div>
   </div>
 </div>
     
@@ -349,6 +341,9 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="script.js"></script>
+  
 </body>
 </html>
