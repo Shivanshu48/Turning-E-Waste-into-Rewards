@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Turning e-waste into rewards</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,7 +49,7 @@
           <img src="coins.png" alt="Reward Coin">
           <span>250 points</span>
         </div>
-        <div class="user-profile">
+        <div class="user-profile" style="cursor: pointer;" onclick="window.location.href='profilepage.html'">
           <img src="profile.png" alt="Profile">
         </div>
       </div>
@@ -78,18 +79,9 @@
     </div>
     
     <div class="services-container">
-      <div class="map-container">
-        <img src="https://i.ibb.co/KqgpzYV/map.png" alt="Drop-off Locations Map">
-        <div class="map-marker marker-1" data-location="Delhi Central">
-          <div class="marker-tooltip">Delhi Central</div>
-        </div>
-        <div class="map-marker marker-2" data-location="South Delhi">
-          <div class="marker-tooltip">South Delhi</div>
-        </div>
-        <div class="map-marker marker-3" data-location="East Delhi">
-          <div class="marker-tooltip">East Delhi</div>
-        </div>
-      </div>
+      <div class="map-container" style="height: 500px; position: relative;">
+  <div id="map" style="height: 100%; width: 100%;"></div>
+</div>
       
       <div class="service-options">
         <div class="service-card">
@@ -160,15 +152,15 @@
     </div>
     
   <div class="news-ticker">
-    <div class="ticker-header">Latest E-Waste News:</div>
-      <div class="ticker-marquee">
-      <div class="ticker-content">
-        <div class="ticker-item">India generates 3.2 million tons of e-waste annually</div>
-        <div class="ticker-item">Only 5% of e-waste is properly recycled in developing countries</div>
-        <div class="ticker-item">One ton of circuit boards contains 40-800 times the gold of ore</div>
-        <div class="ticker-item">E-waste contains valuable materials worth over $62.5 billion annually</div>
-        <div class="ticker-item">Recycling one million laptops saves energy equivalent to electricity used by 3,500 homes in a year</div>
-      </div>
+  <div class="ticker-header">Latest E-Waste News:</div>
+  <div class="ticker-marquee">
+    <div class="ticker-content">
+      <div class="ticker-item">India generates 3.2 million tons of e-waste annually</div>
+      <div class="ticker-item">Only 5% of e-waste is properly recycled in developing countries</div>
+      <div class="ticker-item">One ton of circuit boards contains 40-800 times the gold of ore</div>
+      <div class="ticker-item">E-waste contains valuable materials worth over $62.5 billion annually</div>
+      <div class="ticker-item">Recycling one million laptops saves energy equivalent to electricity used by 3,500 homes in a year</div>
+    </div>
   </div>
 </div>
     
@@ -198,7 +190,7 @@
           <i class="fas fa-history"></i>
         </div>
         <h3>Our Story</h3>
-        <p>Founded in 2020, we started with a simple idea: make recycling electronics as rewarding as buying them.</p>
+        <p>Founded in 2025, we started with a simple idea: make recycling electronics as rewarding as buying them.</p>
       </div>
       
       <div class="about-card">
@@ -224,15 +216,15 @@
     <div class="footer-container">
       <div class="footer-about">
         <h3>EcoRewards</h3>
-        <p>Turning e-waste into rewards since 2020. Join us in our mission to create a cleaner, more sustainable future.</p>
+        <p>Turning e-waste into rewards since 2025. Join us in our mission to create a cleaner, more sustainable future.</p>
       </div>
       
       <div class="footer-contact">
         <h3>Contact Us</h3>
         <ul>
-          <li><i class="fas fa-map-marker-alt"></i> 123 Green Street, Delhi, India</li>
-          <li><i class="fas fa-phone"></i> +91 98765 43210</li>
-          <li><i class="fas fa-envelope"></i> info@ecorewards.com</li>
+          <li><i class="fas fa-map-marker-alt"></i> Plot 40, G.L. Bajaj Institute of Technology & Management, Greater Noida, India</li>
+          <li><i class="fas fa-phone"></i> +91 98383 94848</li>
+          <li><i class="fas fa-envelope"></i> ecorewards48@gmail.com</li>
         </ul>
       </div>
       
@@ -243,8 +235,6 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#stats">Stats</a></li>
           <li><a href="#about">About Us</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
         </ul>
       </div>
       
@@ -263,7 +253,7 @@
       <div class="social-icons">
         <a href="#"><i class="fab fa-facebook-f"></i></a>
         <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.instagram.com/ecorewards48"><i class="fab fa-instagram"></i></a>
         <a href="#"><i class="fab fa-linkedin-in"></i></a>
       </div>
     </div>
@@ -349,6 +339,9 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="script.js"></script>
+  
 </body>
 </html>

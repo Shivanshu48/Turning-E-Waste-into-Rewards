@@ -1,0 +1,262 @@
+{
+  "Delhi": [
+    {
+      "name": "GreenTech Recycling Center",
+      "address": "A-12, Industrial Area, Delhi",
+      "rating": "4.5*",
+      "wasteRecycledLastMonth": "1200kg",
+      "contact": "9876543210",
+      "email": "contact@greentechdelhi.com",
+      "time": "9 AM - 6 PM",
+      "latitude": 28.6139,
+      "longitude": 77.209
+    },
+    {
+      "name": "EcoCycle Delhi",
+      "address": "45, Sector 18, Rohini, Delhi",
+      "rating": "4.2*",
+      "wasteRecycledLastMonth": "900kg",
+      "contact": "9123456780",
+      "email": "support@ecocycledelhi.org",
+      "time": "10 AM - 7 PM",
+      "latitude": 28.7533,
+      "longitude": 77.0446
+    }
+  ],
+  "Mumbai": [
+    {
+      "name": "Mumbai E-Waste Solutions",
+      "address": "Plot No. 8, MIDC Area, Andheri East, Mumbai",
+      "rating": "4.7*",
+      "wasteRecycledLastMonth": "1500kg",
+      "contact": "9988776655",
+      "email": "info@ewastemumbai.in",
+      "time": "9 AM - 5 PM",
+      "latitude": 19.1176,
+      "longitude": 72.8697
+    },
+    {
+      "name": "Recycle Mumbai Hub",
+      "address": "Next to BKC, Bandra East, Mumbai",
+      "rating": "4.3*",
+      "wasteRecycledLastMonth": "1100kg",
+      "contact": "8877665544",
+      "email": "recycle@mumbaiehub.com",
+      "time": "10 AM - 6 PM",
+      "latitude": 19.0558,
+      "longitude": 72.8486
+    }
+  ],
+  "Bangalore": [
+    {
+      "name": "Bangalore Green Recyclers",
+      "address": "22, Electronic City, Bangalore",
+      "rating": "4.6*",
+      "wasteRecycledLastMonth": "1700kg",
+      "contact": "9001122334",
+      "email": "contact@greenbangalore.org",
+      "time": "9 AM - 6 PM",
+      "latitude": 12.8452,
+      "longitude": 77.6604
+    },
+    {
+      "name": "E-Clean Bangalore",
+      "address": "HSR Layout Sector 7, Bangalore",
+      "rating": "4.1*",
+      "wasteRecycledLastMonth": "1300kg",
+      "contact": "8099887766",
+      "email": "clean@ecleanblr.com",
+      "time": "10 AM - 5 PM",
+      "latitude": 12.9121,
+      "longitude": 77.6446
+    }
+  ],
+  "Chennai": [
+    {
+      "name": "Chennai E-Waste Collectors",
+      "address": "Guindy Industrial Estate, Chennai",
+      "rating": "4.4*",
+      "wasteRecycledLastMonth": "1400kg",
+      "contact": "8123456789",
+      "email": "info@chennaiewaste.in",
+      "time": "9 AM - 6 PM",
+      "latitude": 13.0108,
+      "longitude": 80.2209
+    },
+    {
+      "name": "GreenBin Chennai",
+      "address": "T Nagar, Chennai",
+      "rating": "4.0*",
+      "wasteRecycledLastMonth": "1000kg",
+      "contact": "8877441122",
+      "email": "support@greenbinchennai.com",
+      "time": "10 AM - 6 PM",
+      "latitude": 13.0418,
+      "longitude": 80.2332
+    }
+  ],
+  "Kolkata": [
+    {
+      "name": "Eco Green Recyclers",
+      "address": "15, Canal Street, Lake Town, Kolkata",
+      "rating": "4.2*",
+      "wasteRecycledLastMonth": "2400kg",
+      "contact": "9876543210",
+      "email": "ecogreen.kol@gmail.com",
+      "time": "9:00 AM - 6:00 PM",
+      "latitude": 22.6022,
+      "longitude": 88.4022
+    },
+    {
+      "name": "WasteCare E-Waste Solutions",
+      "address": "85A, Topsia Road, Tiljala, Kolkata",
+      "rating": "4*",
+      "wasteRecycledLastMonth": "2200kg",
+      "contact": "9831123456",
+      "email": "wastecare.east@gmail.com",
+      "time": "9:30 AM - 6:30 PM",
+      "latitude": 22.5371,
+      "longitude": 88.3824
+    },
+    {
+      "name": "GreenBin Technologies",
+      "address": "203, Prince Anwar Shah Rd, Jadavpur, Kolkata",
+      "rating": "3.9*",
+      "wasteRecycledLastMonth": "2100kg",
+      "contact": "9800111222",
+      "email": "greenbintech@gmail.com",
+      "time": "10:00 AM - 7:00 PM",
+      "latitude": 22.4989,
+      "longitude": 88.3689
+    },
+    {
+      "name": "TechScrap Recyclers",
+      "address": "33, B.T. Road, Sinthee, Kolkata",
+      "rating": "3.5*",
+      "wasteRecycledLastMonth": "2000kg",
+      "contact": "7001987654",
+      "email": "techscrap.kolkata@gmail.com",
+      "time": "9:00 AM - 6:00 PM",
+      "latitude": 22.6221,
+      "longitude": 88.3752
+    },
+    {
+      "name": "E-Reclaim Hub",
+      "address": "Sector V, Salt Lake City, Kolkata",
+      "rating": "4*",
+      "wasteRecycledLastMonth": "2500kg",
+      "contact": "9123456789",
+      "email": "ereclaimhub@gmail.com",
+      "time": "9:00 AM - 5:30 PM",
+      "latitude": 22.5791,
+      "longitude": 88.4265
+    }
+  ],
+  "Hyderabad": [
+    {
+      "name": "RecycleWorks India Pvt. Ltd.",
+      "address": "IDA Cherlapally, Hyderabad",
+      "rating": "4.3*",
+      "wasteRecycledLastMonth": "2600kg",
+      "contact": "9988776655",
+      "email": "info@recycleworks.in",
+      "time": "9:00 AM - 6:00 PM",
+      "latitude": 17.4551,
+      "longitude": 78.5708
+    },
+    {
+      "name": "Hyderabad E-Waste Solutions",
+      "address": "Balanagar Industrial Area, Hyderabad",
+      "rating": "3.8*",
+      "wasteRecycledLastMonth": "2300kg",
+      "contact": "9345612378",
+      "email": "hydews@gmail.com",
+      "time": "10:00 AM - 7:00 PM",
+      "latitude": 17.4559,
+      "longitude": 78.4481
+    },
+    {
+      "name": "TechCycle Pvt. Ltd.",
+      "address": "IDA Jeedimetla, Hyderabad",
+      "rating": "4*",
+      "wasteRecycledLastMonth": "2500kg",
+      "contact": "9966885566",
+      "email": "contact@techcycle.in",
+      "time": "9:30 AM - 6:30 PM",
+      "latitude": 17.5093,
+      "longitude": 78.4652
+    },
+    {
+      "name": "E-Restore Hub",
+      "address": "Gachibowli Road, Hyderabad",
+      "rating": "3.9*",
+      "wasteRecycledLastMonth": "2400kg",
+      "contact": "7890654321",
+      "email": "erestorehubhyd@gmail.com",
+      "time": "9:00 AM - 6:00 PM",
+      "latitude": 17.4401,
+      "longitude": 78.3489
+    },
+    {
+      "name": "Reboot Recycling Zone",
+      "address": "Moosapet, Hyderabad",
+      "rating": "4.1*",
+      "wasteRecycledLastMonth": "2700kg",
+      "contact": "9000111222",
+      "email": "rebootzonehyd@gmail.com",
+      "time": "9:00 AM - 5:30 PM",
+      "latitude": 17.4526,
+      "longitude": 78.4417
+    }
+  ],
+  
+  "Pune": [
+    {
+      "name": "EcoRenew Pune",
+      "address": "Plot 21, Hinjewadi Phase 1, Pune",
+      "rating": "4.2*",
+      "wasteRecycledLastMonth": "1600kg",
+      "contact": "9123456700",
+      "email": "info@ecorenewpune.com",
+      "time": "9 AM - 6 PM",
+      "latitude": 18.5912,
+      "longitude": 73.7385
+    },
+    {
+      "name": "GreenLine Recyclers",
+      "address": "Katraj Industrial Area, Pune",
+      "rating": "4.0*",
+      "wasteRecycledLastMonth": "1500kg",
+      "contact": "9823765432",
+      "email": "greenline@pune.com",
+      "time": "10 AM - 6 PM",
+      "latitude": 18.4576,
+      "longitude": 73.8651
+    }
+  ],
+  "Ahmedabad": [
+    {
+      "name": "CleanTech Ahmedabad",
+      "address": "GIDC Industrial Estate, Vatva, Ahmedabad",
+      "rating": "4.3*",
+      "wasteRecycledLastMonth": "1700kg",
+      "contact": "9876501234",
+      "email": "contact@cleantechahm.in",
+      "time": "9 AM - 6 PM",
+      "latitude": 22.9587,
+      "longitude": 72.6425
+    },
+    {
+      "name": "SmartReclaim Gujarat",
+      "address": "SG Highway, Thaltej, Ahmedabad",
+      "rating": "4.1*",
+      "wasteRecycledLastMonth": "1550kg",
+      "contact": "9012345678",
+      "email": "smartreclaim@ahmedabad.com",
+      "time": "10 AM - 7 PM",
+      "latitude": 23.0577,
+      "longitude": 72.5152
+    }
+  ]
+}
+
