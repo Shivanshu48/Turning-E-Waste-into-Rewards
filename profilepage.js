@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Profile Data (would normally come from a backend API)
   let userData = {
-    name: 'John Smith',
-    email: 'john.smith@example.com',
-    mobile: '+1 (555) 123-4567',
+    name: 'Suhani Tiwari',
+    email: 'tiwarisuhani@gmail.com',
+    mobile: '+91 9838394848',
     address: '123 Green Street, Eco City, EC 12345',
     ecoPoints: 1250,
     stats: {
