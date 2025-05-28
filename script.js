@@ -37,6 +37,39 @@ cityList.addEventListener('click', (e) => {
     updateDropOffLocations(city);
   }
 });
+  const selected = document.querySelector('.selected-location');
+   cityList = document.querySelector('.city-list');
+  const cityItems = document.querySelectorAll('.city-list li');
+  const selectedText = selected.querySelector('span');
+
+  // Show the dropdown
+  selected.addEventListener('click', () => {
+    if (cityList.style.visibility === 'visible') {
+      cityList.style.visibility = 'hidden';
+      cityList.style.opacity = '0';
+    } else {
+      cityList.style.visibility = 'visible';
+      cityList.style.opacity = '1';
+    }
+  });
+
+  // Set selected city and hide dropdown
+  cityItems.forEach(item => {
+    item.addEventListener('click', () => {
+      selectedText.textContent = item.textContent;
+      cityList.style.visibility = 'hidden';
+      cityList.style.opacity = '0';
+    });
+  });
+
+  // Optional: Hide dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!document.querySelector('.location-dropdown').contains(e.target)) {
+      cityList.style.visibility = 'hidden';
+      cityList.style.opacity = '0';
+    }
+  });
+
 
 function updateDropOffLocations(city) {
   const locations = {
@@ -60,7 +93,7 @@ function updateDropOffLocations(city) {
       { name: 'Ecofly E-Waste Recycling Pvt. Ltd.  Nelamangala', address: 'No. 63A, Dasanapur (H), NH4, Tumkur Road, Behind Hanuman Temple, Nelamangala, Bangalore 562123', rating: '3.5*' , wasterecycledlastmonth: '2750kg' , contact: '8675231456' ,email: 'ecofly72fly0@gmail.com' , time: '10:00 AM - 7:00 PM' },
       { name: 'EWOUR  Peenya Industrial Area', address: 'Plot #5C, Peenya Industrial Area, Bangalore 560058', rating: '3*' , wasterecycledlastmonth: '2000kg' , contact: '9986172763' ,email: 'ewourpeenya@gmail.com' , time: '9:30 AM - 6:30 PM' },
       { name: 'E-Parisaraa Pvt. Ltd.  Peenya', address: 'No. B-41/1, 3rd Stage, Peenya Industrial Estate, Bangalore 560058', rating: '4*' , wasterecycledlastmonth: '2800kg' , contact: '080-28360902' ,email: 'recycle@ewasteindia.com' , time: '9:00 AM - 6:00 PM' },
-      { name:' Zolopik E-Waste Recycler  JP Nagar',address : 'No. 23rd A, Marenahalli Main Road, 2nd Phase, J. P. Nagar, Bangalore 560040' , rating: '3.8*',wasterecycledlastmonth: '2800kg',contact: '8884449985', email: 'recycle@zolopik.com',time: '9:00 AM - 6:00 PM'}
+      { name: 'Zolopik E-Waste Recycler  JP Nagar',address : 'No. 23rd A, Marenahalli Main Road, 2nd Phase, J. P. Nagar, Bangalore 560040' , rating: '3.8*',wasterecycledlastmonth: '2800kg',contact: '8884449985', email: 'recycle@zolopik.com',time: '9:00 AM - 6:00 PM'}
       
 
     ],
@@ -98,10 +131,10 @@ function updateDropOffLocations(city) {
      
     ],
     'Ahmedabad':[
-      { name: ' ECS Environment Pvt. Ltd.', address: ' THE FIRST, B-02, ECS Corporate House, Besides ITC Narmada Hotel, Vastrapur, Ahmedabad, Gujarat 380015', rating: '4.5*' , wasterecycledlastmonth: '2800kg' , contact: ' 89800 04000' ,email: 'ewaste@ecscorporation.com' , time: '9:00 AM - 6:00 PM' },
-      { name: 'E-Coli Waste Management Pvt. Ltd.', address: '203, Trade Square, Opp. Torrent Power House, Sabarmati, Ahmedabad 380005', rating: '3.5*' , wasterecycledlastmonth: '2750kg' , contact: '70464 69000' ,email: 'info@ecoliwaste.com' , time: '10:00 AM - 7:00 PM' },
-      { name: 'Madhav Pastiwala', address: ' Shop-14, Madhav Complex, Near Vasna Bus Station, Jivraj Mehta Hospital Road, Near Prajapati Garden, Vasna, Ahmedabad 380007', rating: '3*' , wasterecycledlastmonth: '2000kg' , contact: ' 88666 96614' ,email: 'madhavpastiwala@gmail.com' , time: '9:30 AM - 6:30 PM' },
-      { name: 'Gulshan IBC Group', address: ' Kamod Circle - Bakrol, Ahmedabad, Gujarat', rating: '4*' , wasterecycledlastmonth: '2800kg' , contact: ' 91576 15075' ,email: 'gulshanibc@gmail.com' , time: '9:00 AM - 6:00 PM' },
+      { name: 'ECS Environment Pvt. Ltd.', address: ' THE FIRST, B-02, ECS Corporate House, Besides ITC Narmada Hotel, Vastrapur, Ahmedabad, Gujarat 380015', rating: '4.5*' , wasterecycledlastmonth: '2800kg' , contact: '8980004000' ,email: 'ewaste@ecscorporation.com' , time: '9:00 AM - 6:00 PM' },
+      { name: 'E-Coli Waste Management Pvt. Ltd.', address: '203, Trade Square, Opp. Torrent Power House, Sabarmati, Ahmedabad 380005', rating: '3.5*' , wasterecycledlastmonth: '2750kg' , contact: '7046469000' ,email: 'info@ecoliwaste.com' , time: '10:00 AM - 7:00 PM' },
+      { name: 'Madhav Pastiwala', address: 'Shop-14, Madhav Complex, Near Vasna Bus Station, Jivraj Mehta Hospital Road, Near Prajapati Garden, Vasna, Ahmedabad 380007', rating: '3*' , wasterecycledlastmonth: '2000kg' , contact: '8866696614' ,email: 'madhavpastiwala@gmail.com' , time: '9:30 AM - 6:30 PM' },
+      { name: 'Gulshan IBC Group', address: ' Kamod Circle - Bakrol, Ahmedabad, Gujarat', rating: '4*' , wasterecycledlastmonth: '2800kg' , contact: ' 9157615075' ,email: 'gulshanibc@gmail.com' , time: '9:00 AM - 6:00 PM' },
       { name:'BioMax Security',address : 'Ahmedabad, Gujarat' , rating: '3.8*',wasterecycledlastmonth: '2800kg',contact: '8547965479', email: 'biomax234@gmail.com',time: '9:00 AM - 6:00 PM'}
       
       
@@ -445,7 +478,7 @@ fetch('centres.json')
       });
     }
 
-    showMarkersForCity('Delhi');  // Default city on load
+    showMarkersForCity('Kolkata');  // Default city on load
   })
   .catch(err => console.error('Failed to load centres.json:', err));
 
