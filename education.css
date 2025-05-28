@@ -1,3 +1,15 @@
+:root {
+  --primary-color: #4CAF50;
+  --primary-light: #81C784;
+  --primary-dark: #388E3C;
+  --accent-color: #FFC107;
+  --text-dark: #333333;
+  --text-light: #666666;
+  --white: #FFFFFF;
+  --light-bg: #F9FBF9;
+  --shadow-color: rgba(76, 175, 80, 0.2);
+  --transition: all 0.3s ease-in-out;
+}
 /* Base styles */
 * {
   margin: 0;
@@ -8,7 +20,7 @@
 body {
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
-  background: linear-gradient(90deg,#aae6cf,#dcedc1);
+  background: linear-gradient(90deg,#aae6cf,#dcedc1);;
   color: #333;
 }
 
@@ -21,6 +33,7 @@ header {
   width: 100%;
   top: 0;
   z-index: 1000;
+  background: linear-gradient(90deg,#aae6cf,#dcedc1);
 }
 
 nav {
@@ -31,8 +44,9 @@ nav {
 
 .logo {
   display: flex;
-  align-items: center;
-  gap: 1rem;
+  align-items:center;
+  
+
 }
 
 .logo img {
@@ -40,11 +54,14 @@ nav {
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
+  margin-right: 10px;
+  border-radius: 50%;
 }
 
 .logo h1 {
   font-size: 1.8rem;
-  color: #2c5282;
+  color:var(--primary-color);
+ 
 }
 
 /* Main content styles */
@@ -61,7 +78,7 @@ main {
 
 .hero h2 {
   font-size: 2.5rem;
-  color: #2c5282;
+  color: var(--primary-color);
   margin-bottom: 1rem;
 }
 
@@ -77,10 +94,11 @@ main {
   background: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 5px solid lightgreen;
 }
 
 .content-section h2 {
-  color: #2c5282;
+  color: var(--primary-color);
   font-size: 2rem;
   margin-bottom: 2rem;
   text-align: center;
@@ -106,7 +124,7 @@ main {
 
 .text-content li::before {
   content: "•";
-  color: #2c5282;
+  color: var(--primary-color);
   font-weight: bold;
   position: absolute;
   left: 0;
@@ -146,7 +164,7 @@ main {
 }
 
 .step h3 {
-  color: #2c5282;
+  color: var(--primary-color);
   margin-bottom: 0.5rem;
 }
 
@@ -170,7 +188,7 @@ main {
 }
 
 .impact-card h3 {
-  color: #2c5282;
+  color: var(--primary-color);
   margin-bottom: 1rem;
 }
 
@@ -194,7 +212,7 @@ main {
 }
 
 .benefit h3 {
-  color: #2c5282;
+  color: var(--primary-color);
   margin-bottom: 1rem;
 }
 
@@ -237,7 +255,7 @@ main {
 
 /* Footer styles */
 footer {
-  background: rgba(44, 82, 130, 0.9);
+  background:#2E7D32;
   color: white;
   padding: 3rem 0 1rem;
   margin-top: 4rem;
