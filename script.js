@@ -110,17 +110,29 @@ function updateDropOffLocations(city) {
     // Add more cities and their locations as needed
   };
   
-  const locationResults = document.querySelector('.location-results');
-  const cityLocations = locations[city] || locations['Delhi']; // Default to Delhi if city not found
-  
-  locationResults.innerHTML = cityLocations.map(location => `
-    <div class="location-item">
-      <h3>${location.name}</h3>
-      <p><i class="fas fa-map-marker-alt"></i> ${location.address}</p>
-      <p><i class="fas fa-clock"></i> ${location.time}</p>
+  const container = document.querySelector('.location-results');
+  container.innerHTML = '';  // Clear existing locations
+
+  if (!locations[city]) {
+    container.innerHTML = '<p>No locations found for this city.</p>';
+    return;
+  }
+
+  locations[city].forEach(loc => {
+    const locDiv = document.createElement('div');
+    locDiv.classList.add('location-item');
+    locDiv.innerHTML = `
+      <h3>${loc.name}</h3>
+      <p><i class="fas fa-map-marker-alt"></i> ${loc.address}</p>
+      <p><i class="fas fa-clock"></i> ${loc.time}</p>
+      <p>Rating: ${loc.rating}</p>
+      <p>Waste Recycled Last Month: ${loc.wasterecycledlastmonth}</p>
+      <p>Contact: <a href="tel:${loc.contact}">${loc.contact}</a></p>
+      <p>Email: <a href="mailto:${loc.email}">${loc.email}</a></p>
       <button class="location-btn">Get Directions</button>
-    </div>
-  `).join('');
+    `;
+    container.appendChild(locDiv);
+  });
 }
 
 // Navigation bar scroll effect
