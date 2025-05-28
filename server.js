@@ -42,8 +42,8 @@ function writeJsonFile(filePath, data) {
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'rohangupta112005@gmail.com',
-    pass: 'caoz ufsw ynvq eptr' // Your app password here
+    user: 'ecorewards48@gmail.com',
+    pass: 'zubr gspc eorb fyxc' // Your app password here
   }
 });
 
@@ -60,7 +60,7 @@ app.post('/send-otp', async (req, res) => {
   otpStore[email] = { otp, expiresAt };
 
   const mailOptions = {
-    from: 'rohangupta112005@gmail.com',
+    from: 'ecorewards48@gmail.com',
     to: email,
     subject: 'Your OTP Code',
     text: `Your OTP is: ${otp}. It will expire in 5 minutes.`
@@ -134,7 +134,7 @@ app.post('/login', async (req, res) => {
   otpStore[email] = { otp, expiresAt };
 
   const mailOptions = {
-    from: 'rohangupta112005@gmail.com',
+    from: 'ecorewards48@gmail.com',
     to: email,
     subject: 'Your OTP Code',
     text: `Your OTP is: ${otp}. It will expire in 5 minutes.`
@@ -186,7 +186,7 @@ app.post('/schedule-pickup', (req, res) => {
   }
 
   const mailOptions = {
-    from: 'rohangupta112005@gmail.com',
+    from: 'ecorewards48@gmail.com',
     to: email,
     subject: 'Pickup Scheduled - E-Waste Recycling',
     text: `Hello ${name},
