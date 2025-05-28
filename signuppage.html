@@ -149,11 +149,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const data = await response.json();
       if (response.ok) {
-        alert('Registration successful!');
-        form.reset();
-        registerBtn.style.display = 'none';
-        otpSection.style.display = 'none';
-        otpVerified = false;
+       alert('Registration successful!');
+setTimeout(() => {
+  window.location.href = 'index.html';
+},50); // Redirect after 0.5 seconds to let the alert show
+
+form.reset();
+registerBtn.style.display = 'none';
+otpSection.style.display = 'none';
+otpVerified = false;
+
       } else {
         alert(data.message || 'Registration failed.');
       }
