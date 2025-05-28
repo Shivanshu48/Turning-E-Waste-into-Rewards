@@ -93,9 +93,13 @@ p {
   gap: var(--spacing-sm);
 }
 
+.logo h1{
+  margin-top: 15px;
+  text-align: center;
+}
 .logo-image {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
 }
