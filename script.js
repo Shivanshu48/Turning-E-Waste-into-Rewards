@@ -307,7 +307,7 @@ ctaButton.addEventListener('click', () => {
 
 // Know More button functionality
 knowMoreBtn.addEventListener('click', () => {
-  window.open('https://www.who.int/news-room/fact-sheets/detail/electronic-waste', '_blank');
+  window.open('education.html', '_blank');
 });
 
 // Initialize active navigation link based on scroll position
