@@ -13,9 +13,9 @@ const counterElements = document.querySelectorAll('.counter');
 const mapMarkers = document.querySelectorAll('.map-marker');
 const ctaButton = document.querySelector('.cta-button');
 const knowMoreBtn = document.querySelector('.know-more-btn');
-const locationDropdown = document.querySelector('.location-dropdown');
-const selectedLocation = document.querySelector('.selected-location span');
-const cityList = document.querySelector('.city-list');
+let locationDropdown = document.querySelector('.location-dropdown');
+let selectedLocation = document.querySelector('.selected-location span');
+let cityList = document.querySelector('.city-list');
 
 // City selection functionality
 locationDropdown.addEventListener('click', (e) => {
@@ -49,34 +49,34 @@ function updateDropOffLocations(city) {
       
     ],
     'Mumbai': [
-      { name: 'E Waste Recycling India', address: '615, Pearl Plaza Premises, Andheri West, Mumbai – 400058', rating: '4.5*' , wasterecycledlastmonth: '2800kg' , contact: '9234253028' ,email: 'greenindia112@gmail.com' , time: '9:00 AM - 6:00 PM' },
-      { name: 'Nicholas Recycling Pvt. Ltd.', address: 'Nicholas Compound, Sativali Road, Valiv, Vasai East – 401208', rating: '3.5*' , wasterecycledlastmonth: '2750kg' , contact: '9244557619' ,email: 'nicholas000@gmail.com' , time: '10:00 AM - 7:00 PM' },
+      { name: 'E Waste Recycling India', address: '615, Pearl Plaza Premises, Andheri West, Mumbai  400058', rating: '4.5*' , wasterecycledlastmonth: '2800kg' , contact: '9234253028' ,email: 'greenindia112@gmail.com' , time: '9:00 AM - 6:00 PM' },
+      { name: 'Nicholas Recycling Pvt. Ltd.', address: 'Nicholas Compound, Sativali Road, Valiv, Vasai East  401208', rating: '3.5*' , wasterecycledlastmonth: '2750kg' , contact: '9244557619' ,email: 'nicholas000@gmail.com' , time: '10:00 AM - 7:00 PM' },
       { name: 'Just Dispose Recycling Pvt. Ltd.', address: 'Unit No: 103, 110, 119, Arvind Industrial Estate, Navghar, Vasai East, Dist. Thane', rating: '3*' , wasterecycledlastmonth: '2000kg' , contact: '8902135676' ,email: 'disposejst3228@gmail.com' , time: '9:30 AM - 6:30 PM' },
       { name: 'Kohinoor E-Waste Recycling Pvt. Ltd.', address: 'Gut No. 205/1 and 205/2, Opp. Gurudatta Washing Centre, Dhekhu, Khalapur, Dist. Raigad', rating: '4*' , wasterecycledlastmonth: '2800kg' , contact: '9874324595' ,email: 'kohi12noor2@gmail.com' , time: '9:00 AM - 6:00 PM' },
-      { name:'Masstech Recycling LLP',address : 'Gala No. 56, 58, 59 & 82, M.J.K. Compound, Kherani Road, Sakinaka, Mumbai – 400072' , rating: '3.8*',wasterecyclelastmonth: '2800kg',contact: '9854090758', email: 'masstech300@gmail.com',time: '9:00 AM - 6:00 PM'}
+      { name:'Masstech Recycling LLP',address : 'Gala No. 56, 58, 59 & 82, M.J.K. Compound, Kherani Road, Sakinaka, Mumbai  400072' , rating: '3.8*',wasterecyclelastmonth: '2800kg',contact: '9854090758', email: 'masstech300@gmail.com',time: '9:00 AM - 6:00 PM'}
       
     ],
     'Bangalore':[
-      { name: 'Ebox Recyclers – Electronic City', address: ' Shed #B-3, KSSIDC Industrial Estate, Veerasandra 2nd Stage, Huskur Road, Electronic City, Bangalore 560100', rating: '4.5*' , wasterecycledlastmonth: '2800kg' , contact: '9844068944' ,email: 'eboxx@gmail.com' , time: '9:00 AM - 6:00 PM' },
-      { name: 'Ecofly E-Waste Recycling Pvt. Ltd. – Nelamangala', address: 'No. 63A, Dasanapur (H), NH4, Tumkur Road, Behind Hanuman Temple, Nelamangala, Bangalore 562123', rating: '3.5*' , wasterecycledlastmonth: '2750kg' , contact: '8675231456' ,email: 'ecofly72fly0@gmail.com' , time: '10:00 AM - 7:00 PM' },
-      { name: 'EWOUR – Peenya Industrial Area', address: 'Plot #5C, Peenya Industrial Area, Bangalore 560058', rating: '3*' , wasterecycledlastmonth: '2000kg' , contact: '9986172763' ,email: 'ewourpeenya@gmail.com' , time: '9:30 AM - 6:30 PM' },
-      { name: 'E-Parisaraa Pvt. Ltd. – Peenya', address: 'No. B-41/1, 3rd Stage, Peenya Industrial Estate, Bangalore 560058', rating: '4*' , wasterecycledlastmonth: '2800kg' , contact: '080-28360902' ,email: 'recycle@ewasteindia.com' , time: '9:00 AM - 6:00 PM' },
-      { name:' Zolopik E-Waste Recycler – JP Nagar',address : 'No. 23rd A, Marenahalli Main Road, 2nd Phase, J. P. Nagar, Bangalore 560040' , rating: '3.8*',wasterecyclelastmonth: '2800kg',contact: '8884449985', email: 'recycle@zolopik.com',time: '9:00 AM - 6:00 PM'}
+      { name: 'Ebox Recyclers  Electronic City', address: ' Shed #B-3, KSSIDC Industrial Estate, Veerasandra 2nd Stage, Huskur Road, Electronic City, Bangalore 560100', rating: '4.5*' , wasterecycledlastmonth: '2800kg' , contact: '9844068944' ,email: 'eboxx@gmail.com' , time: '9:00 AM - 6:00 PM' },
+      { name: 'Ecofly E-Waste Recycling Pvt. Ltd.  Nelamangala', address: 'No. 63A, Dasanapur (H), NH4, Tumkur Road, Behind Hanuman Temple, Nelamangala, Bangalore 562123', rating: '3.5*' , wasterecycledlastmonth: '2750kg' , contact: '8675231456' ,email: 'ecofly72fly0@gmail.com' , time: '10:00 AM - 7:00 PM' },
+      { name: 'EWOUR  Peenya Industrial Area', address: 'Plot #5C, Peenya Industrial Area, Bangalore 560058', rating: '3*' , wasterecycledlastmonth: '2000kg' , contact: '9986172763' ,email: 'ewourpeenya@gmail.com' , time: '9:30 AM - 6:30 PM' },
+      { name: 'E-Parisaraa Pvt. Ltd.  Peenya', address: 'No. B-41/1, 3rd Stage, Peenya Industrial Estate, Bangalore 560058', rating: '4*' , wasterecycledlastmonth: '2800kg' , contact: '080-28360902' ,email: 'recycle@ewasteindia.com' , time: '9:00 AM - 6:00 PM' },
+      { name:' Zolopik E-Waste Recycler  JP Nagar',address : 'No. 23rd A, Marenahalli Main Road, 2nd Phase, J. P. Nagar, Bangalore 560040' , rating: '3.8*',wasterecyclelastmonth: '2800kg',contact: '8884449985', email: 'recycle@zolopik.com',time: '9:00 AM - 6:00 PM'}
       
 
     ],
     'Chennai':[
       { name: 'Sree E-Waste Recycling', address: '14, Velachery Rd, Dhadeswaram Nagar, Velachery, Chennai, Tamil Nadu 600042', rating: '4.5*' , wasterecycledlastmonth: '2800kg' , contact: '9098654123' ,email: 'sreee2@gmail.com' , time: '9:00 AM - 6:00 PM' },
-      { name: 'Ramky ARM – E-Waste Recycling, Computer Scrap Buyers and Collection Center', address: '4, Diamond Dune, 323, NH 4, Rajaram Mehta Nagar, Aminjikarai, Chennai, Tamil Nadu 600029', rating: '3.5*' , wasterecycledlastmonth: '2750kg' , contact: '9922453278' ,email: 'ramkyarm@gmail.com' , time: '10:00 AM - 7:00 PM' },
+      { name: 'Ramky ARM  E-Waste Recycling, Computer Scrap Buyers and Collection Center', address: '4, Diamond Dune, 323, NH 4, Rajaram Mehta Nagar, Aminjikarai, Chennai, Tamil Nadu 600029', rating: '3.5*' , wasterecycledlastmonth: '2750kg' , contact: '9922453278' ,email: 'ramkyarm@gmail.com' , time: '10:00 AM - 7:00 PM' },
       { name: 'Global Waste Recyclers Limited', address: 'Saravana Complex, IIIrd Floor, 200, Peters Road, Royapettah, Chennai, Tamil Nadu 600014', rating: '3*' , wasterecycledlastmonth: '2000kg' , contact: '8712563429' ,email: 'globalwaste11@gmail.com' , time: '9:30 AM - 6:30 PM' },
       { name: 'Recykal Technology Pvt Ltd.', address: 'No 69,4th Main Rd, Sithalapakkam, Chennai, Tamil Nadu 600126', rating: '4*' , wasterecycledlastmonth: '2800kg' , contact: '9765416248' ,email: 'recykal3456@gmail.com' , time: '9:00 AM - 6:00 PM' },
       { name: 'Anthony Traders',address : 'Back side, No.1, Vivekanand St, near Karumari Amman Kovil, Annani Indira Nagar, Indira Nagar, Okkiyampettai, Chennai, Thoraipakkam, Tamil Nadu 600097' , rating: '3.8*',wasterecyclelastmonth: '2800kg',contact: '9854090758', email: 'anthony7878@gmail.com',time: '9:00 AM - 6:00 PM'}
       
     ],
     'Kolkata':[
-      { name: 'Kolkata Municipal Corporation (KMC) – Dhapa Garage', address: 'Dhapa Garage, Tangra, Kolkata', rating: '4.5*' , wasterecycledlastmonth: '2800kg' , contact: '9804103317' ,email: 'kmc.012@gmail.com' , time: '9:00 AM - 6:00 PM' },
+      { name: 'Kolkata Municipal Corporation (KMC)  Dhapa Garage', address: 'Dhapa Garage, Tangra, Kolkata', rating: '4.5*' , wasterecycledlastmonth: '2800kg' , contact: '9804103317' ,email: 'kmc.012@gmail.com' , time: '9:00 AM - 6:00 PM' },
       { name: 'Eco Age Recycling', address: 'Kashipur, South 24 Parganas, Kolkata 700135', rating: '3.5*' , wasterecycledlastmonth: '2750kg' , contact: '8584888008' ,email: 'ecoagerecycle@gmail.com' , time: '10:00 AM - 7:00 PM' },
-      { name: 'E-Waste Recyclers India (EWRI) – OM Logistics Ltd.', address: 'P-1, New C.I.T P-46 Extn., Near Brace Bridge Railway Station, Hide Road, Kolkata 700088', rating: '3*' , wasterecycledlastmonth: '2000kg' , contact: '8017307286' ,email: 'emriom99@gmail.com' , time: '9:30 AM - 6:30 PM' },
+      { name: 'E-Waste Recyclers India (EWRI)  OM Logistics Ltd.', address: 'P-1, New C.I.T P-46 Extn., Near Brace Bridge Railway Station, Hide Road, Kolkata 700088', rating: '3*' , wasterecycledlastmonth: '2000kg' , contact: '8017307286' ,email: 'emriom99@gmail.com' , time: '9:30 AM - 6:30 PM' },
       { name: 'Ecompusell', address: 'Tirupati Apartment No. G-2, 165/1 Ashok Garh, Kolkata 700108', rating: '4*' , wasterecycledlastmonth: '2800kg' , contact: '9330988059' ,email: 'ecompusell88@gmail.com' , time: '9:00 AM - 6:00 PM' },
       { name:'Quickssell',address : '33/H/3, Mirza Ghalib Street, Kolkata 700016' , rating: '3.8*',wasterecyclelastmonth: '2800kg',contact: '8335981512', email: 'sellkaro68@gmail.com',time: '9:00 AM - 6:00 PM'}
       
@@ -107,7 +107,6 @@ function updateDropOffLocations(city) {
       
       
     ]
-
     // Add more cities and their locations as needed
   };
   
@@ -354,4 +353,93 @@ fadeElements.forEach(element => {
   element.style.transform = 'translateY(20px)';
   element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
   fadeObserver.observe(element);
+});
+
+
+
+
+
+// for map
+
+let centers = [];  // Will hold your centers data
+
+// Initialize Leaflet map centered on India
+const map = L.map('map').setView([20.5937, 78.9629], 5);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+const markersGroup = L.layerGroup().addTo(map);
+
+function showMarkersForCity(city) {
+  markersGroup.clearLayers();
+
+  const filteredCenters = centers.filter(center => center["CITY"].toLowerCase() === city.toLowerCase());
+
+  if (filteredCenters.length === 0) {
+    alert(`No centers found for ${city}`);
+    return;
+  }
+
+  const bounds = [];
+
+  filteredCenters.forEach(center => {
+    const lat = parseFloat(center["LATITUDE"]);
+    const lng = parseFloat(center["LONGITUDE"]);
+    const name = center["E-WASTE COLLECTION CENTERS"];
+    const address = center["ADDRESS"];
+    const contact = center["CONTACT"];
+
+    const marker = L.marker([lat, lng]).addTo(markersGroup);
+    const popupContent = `
+      <b>${name}</b><br/>
+      ${address}<br/>
+      Contact: ${contact}
+    `;
+    marker.bindPopup(popupContent);
+    bounds.push([lat, lng]);
+  });
+
+  if (bounds.length === 1) {
+    map.setView(bounds[0], 12);
+  } else {
+    map.fitBounds(bounds, { padding: [50, 50] });
+  }
+}
+
+// Load centres.json and initialize
+fetch('centres.json')
+  .then(res => res.json())
+  .then(data => {
+    centers = data;
+    showMarkersForCity('Delhi');  // Default city on load
+  })
+  .catch(err => console.error('Failed to load centres.json:', err));
+
+// Dropdown selection logic
+locationDropdown = document.querySelector('.location-dropdown');
+selectedLocation = locationDropdown.querySelector('.selected-location span');
+cityList = locationDropdown.querySelector('.city-list');
+
+// Toggle city list visibility
+locationDropdown.querySelector('.selected-location').addEventListener('click', () => {
+  cityList.classList.toggle('show');
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', (e) => {
+  if (!locationDropdown.contains(e.target)) {
+    cityList.classList.remove('show');
+  }
+});
+
+// Handle city selection
+cityList.querySelectorAll('li').forEach(li => {
+  li.addEventListener('click', () => {
+    const city = li.getAttribute('data-city');
+    selectedLocation.textContent = city;
+    cityList.classList.remove('show');
+    showMarkersForCity(city);
+  });
 });
