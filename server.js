@@ -200,7 +200,7 @@ Details:
 - Preferred Time: ${time}
 - Items: ${items}
 
-Pickup fee: ₹199 (additional charges may apply)
+Pickup fee: ₹49 (additional charges may apply)
 
 Thank you,
 Team EcoRewards`
